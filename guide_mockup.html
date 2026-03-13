@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ODD 요구사항 서비스 — 인앱 가이드 디자인 샘플</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans KR', sans-serif; background: #f8f9fa; color: #212529; }
+  .page { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+  h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 4px; }
+  .app-caption { color: #6c757d; font-size: 0.85rem; margin-bottom: 24px; }
+
+  /* ── 전체 흐름 안내 ── */
+  .flow-banner {
+    background: #f0f4ff;
+    border: 1px solid #c5d3f7;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 0.88rem;
+    line-height: 1.8;
+  }
+  .flow-banner .flow-title { font-weight: 700; color: #1a3a8f; margin-bottom: 6px; }
+  .flow-steps { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .flow-step {
+    background: #1a3a8f; color: #fff;
+    border-radius: 20px; padding: 3px 12px;
+    font-size: 0.82rem; font-weight: 600;
+  }
+  .flow-arrow { color: #6c757d; font-size: 1rem; }
+
+  /* ── 섹션 ── */
+  .section { background: #fff; border: 1px solid #dee2e6; border-radius: 10px; padding: 22px 24px; margin-bottom: 20px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .section-title { font-size: 1.1rem; font-weight: 700; }
+  .step-badge {
+    background: #e9ecef; color: #495057;
+    border-radius: 12px; padding: 2px 10px;
+    font-size: 0.75rem; font-weight: 600;
+  }
+  .step-badge.active { background: #1a3a8f; color: #fff; }
+
+  /* ── 패턴 A: 섹션 배너 ── */
+  .info-banner {
+    border-left: 4px solid #1f77b4;
+    background: #EBF5FB;
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #1a3a5e;
+  }
+  .info-banner.orange { border-color: #e67e22; background: #FEF9E7; color: #5d3a00; }
+  .info-banner.green  { border-color: #27ae60; background: #EAFAF1; color: #0d4a25; }
+  .info-banner.purple { border-color: #8e44ad; background: #F5EEF8; color: #4a1770; }
+
+  /* ── 패턴 B: 필드 + 툴팁 ── */
+  .field-group { margin-bottom: 16px; }
+  .field-label {
+    font-size: 0.88rem; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 5px;
+  }
+  .required { color: #e74c3c; }
+  .tooltip-wrap { position: relative; display: inline-block; }
+  .tooltip-icon {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: #adb5bd; color: #fff;
+    font-size: 0.7rem; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .tooltip-box {
+    display: none;
+    position: absolute; left: 22px; top: -4px;
+    background: #212529; color: #fff;
+    border-radius: 6px; padding: 8px 12px;
+    font-size: 0.78rem; line-height: 1.6;
+    width: 240px; z-index: 10;
+    white-space: pre-line;
+  }
+  .tooltip-wrap:hover .tooltip-box { display: block; }
+
+  .field-input {
+    width: 100%; padding: 8px 10px;
+    border: 1px solid #ced4da; border-radius: 6px;
+    font-size: 0.88rem; color: #495057;
+    background: #fff;
+  }
+  .field-select {
+    width: 100%; padding: 8px 10px;
+    border: 1px solid #ced4da; border-radius: 6px;
+    font-size: 0.88rem; color: #6c757d;
+    background: #fff;
+  }
+  /* ── 패턴 C: 인라인 캡션 ── */
+  .caption {
+    font-size: 0.78rem; color: #6c757d;
+    margin-top: 5px; line-height: 1.5;
+  }
+
+  /* ── 칩 태그 ── */
+  .chip {
+    display: inline-block;
+    background: #E8D5F5; color: #5C1B8A;
+    border-radius: 12px; padding: 3px 12px;
+    font-size: 0.82rem; font-weight: 600;
+    margin: 2px 4px 2px 0;
+  }
+
+  /* ── 조합 수 미터 ── */
+  .metric-box {
+    display: inline-block;
+    background: #f8f9fa; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 10px 20px;
+    text-align: center; min-width: 140px;
+  }
+  .metric-label { font-size: 0.78rem; color: #6c757d; }
+  .metric-value { font-size: 1.5rem; font-weight: 700; color: #1a3a8f; }
+
+  /* ── 그리드 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+  /* ── 버튼 ── */
+  .btn { padding: 9px 18px; border-radius: 6px; font-size: 0.88rem; font-weight: 600; border: none; cursor: pointer; }
+  .btn-primary { background: #1f77b4; color: #fff; }
+  .btn-secondary { background: #e9ecef; color: #495057; }
+  .btn-success { background: #27ae60; color: #fff; }
+
+  /* ── 구분선 ── */
+  hr { border: none; border-top: 1px solid #dee2e6; margin: 20px 0; }
+
+  /* ── 범례 ── */
+  .legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 앱 헤더 -->
+  <h1>🚗 ODD 기반 데이터 요구사항 정의 서비스</h1>
+  <p class="app-caption">v2.0 - 멀티 시나리오 그룹 지원</p>
+
+  <!-- 범례 -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#EBF5FB;border:2px solid #1f77b4;"></div> 섹션 배너 (단계 안내)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#adb5bd;border-radius:50%;"></div> 필드 툴팁 (?)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f8f9fa;border:1px solid #dee2e6;"></div> 인라인 캡션</div>
+  </div>
+
+  <!-- ════ 전체 흐름 안내 (앱 최상단) ════ -->
+  <div class="flow-banner">
+    <div class="flow-title">📌 사용 흐름</div>
+    <div class="flow-steps">
+      <span class="flow-step">① 기본 정보 입력</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">② 시나리오 그룹 추가 × N</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">③ 수량 입력</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">④ Submit</span>
+    </div>
+    <div style="margin-top:8px;font-size:0.82rem;color:#495057;">
+      시나리오 그룹 = <b>Region 선택 → Core ODD 선택 → Extension 입력 → Scenario 생성 → 저장</b><br>
+      성격이 다른 조건 묶음이 여러 개라면 ② 단계를 반복해서 그룹을 쌓으세요.
+    </div>
+  </div>
+
+  <!-- ════ STEP 1: 기본 정보 ════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">1. Request 기본 정보</span>
+      <span class="step-badge active">필수 입력</span>
+    </div>
+
+    <!-- 패턴 A: 섹션 배너 -->
+    <div class="info-banner">
+      📋 최종 산출물(Excel · JSON)에 기록되는 요청 기본 정보입니다.<br>
+      ※ 별표(<span style="color:#e74c3c">*</span>) 항목은 필수입니다.
+    </div>
+
+    <div class="field-group">
+      <div class="field-label">제목 <span class="required">*</span></div>
+      <input class="field-input" placeholder="예: 미국 야간 고속도로 데이터 요청" />
+    </div>
+
+    <div class="grid-2">
+      <div class="field-group">
+        <div class="field-label">요청인 이름 <span class="required">*</span></div>
+        <input class="field-input" placeholder="예: 홍길동" />
+      </div>
+      <div class="field-group">
+        <div class="field-label">요청인 이메일 <span class="required">*</span></div>
+        <input class="field-input" placeholder="예: gildong@company.com" />
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- 패턴 B: 필드 툴팁 -->
+      <div class="field-group">
+        <div class="field-label">
+          Product <span class="required">*</span>
+          <div class="tooltip-wrap">
+            <span class="tooltip-icon">?</span>
+            <div class="tooltip-box">FV = Front Vision (전방 카메라)
+SVC = Surround View Camera (주변 카메라)
+Other = 기타 제품</div>
+          </div>
+        </div>
+        <select class="field-select"><option value="">선택하세요</option><option>FV</option><option>SVC</option><option>Other</option></select>
+      </div>
+      <div class="field-group">
+        <div class="field-label">
+          Scenario <span class="required">*</span>
+          <div class="tooltip-wrap">
+            <span class="tooltip-icon">?</span>
+            <div class="tooltip-box">선택한 시나리오 타입에 맞는 Core ODD 속성이 우선 표시됩니다.
+예) Driving 선택 → 주행 관련 속성 상단 노출</div>
+          </div>
+        </div>
+        <select class="field-select"><option value="">선택하세요</option><option>Driving</option><option>Parking</option><option>Other</option></select>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label">
+        요청 범위 <span class="required">*</span>
+        <div class="tooltip-wrap">
+          <span class="tooltip-icon">?</span>
+          <div class="tooltip-box">데이터 취득: 원본 데이터 수집 요청
+데이터 라벨링: 어노테이션 작업 요청
+두 가지 동시 선택 가능</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:4px;">
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;">
+          <input type="checkbox" checked /> 데이터 취득
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.88rem;cursor:pointer;">
+          <input type="checkbox" checked /> 데이터 라벨링
+        </label>
+      </div>
+    </div>
+
+    <!-- 데이터 라벨링 선택 시 Feature 입력 -->
+    <div style="background:#faf5ff;border:1px solid #d8b4fe;border-radius:8px;padding:14px 16px;margin-bottom:16px;">
+      <div class="field-label">
+        라벨링 Feature <span class="required">*</span>
+        <div class="tooltip-wrap">
+          <span class="tooltip-icon">?</span>
+          <div class="tooltip-box">라벨링 Feature = 어노테이션 유형
+예) 3DP OD (3D 포인트 클라우드 물체 검출)
+    LPSD (차선·주차선 감지)
+    2DP LD (2D 차선 검출)</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <input class="field-input" placeholder="Feature 이름 입력" style="flex:1;" />
+        <button class="btn btn-secondary">➕ 추가</button>
+      </div>
+      <div>
+        <span class="chip">🏷️ 3DP OD</span>
+        <span class="chip">🏷️ LPSD</span>
+        <span class="chip">🏷️ 2DP LD</span>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="field-group">
+        <div class="field-label">설명</div>
+        <textarea class="field-input" rows="3" placeholder="요청에 대한 상세 설명 (선택사항)"></textarea>
+      </div>
+      <div class="field-group">
+        <div class="field-label">희망 완료일 <span class="required">*</span></div>
+        <input class="field-input" type="date" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ STEP 2~7: 시나리오 그룹 빌더 ════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">➕ 시나리오 그룹 추가</span>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label">시나리오 이름 <span class="required">*</span></div>
+      <input class="field-input" placeholder="예: 야간 주차장, 우천 야간 고속도로" />
+    </div>
+
+    <hr>
+
+    <!-- Step 2 -->
+    <div style="margin-bottom:18px;">
+      <div class="section-header">
+        <span class="section-title" style="font-size:1rem;">2. Region 선택</span>
+        <span class="step-badge active">2 / 6</span>
+      </div>
+      <!-- 패턴 A -->
+      <div class="info-banner">
+        🌍 데이터를 수집할 지역을 선택합니다. 이 그룹의 모든 조건조합에 고정값으로 들어갑니다.
+      </div>
+      <select class="field-select" style="max-width:300px;">
+        <option value="">Region을 선택하세요</option>
+        <option>한국 (KOR)</option><option>미국 (USA)</option><option>중국 (CHN)</option>
+        <option>유럽 (EUR)</option><option>지역무관 (ANY)</option>
+      </select>
+    </div>
+
+    <hr>
+
+    <!-- Step 3 -->
+    <div style="margin-bottom:18px;">
+      <div class="section-header">
+        <span class="section-title" style="font-size:1rem;">3. Core ODD 선택</span>
+        <span class="step-badge active">3 / 6</span>
+      </div>
+      <!-- 패턴 A -->
+      <div class="info-banner">
+        🎯 ODD의 핵심 조건을 선택합니다. ⭐ 항목은 권장 필수 조건입니다. 각 속성에서 복수 선택이 가능하며, 선택한 값들의 모든 조합이 조건조합 행으로 생성됩니다.
+      </div>
+      <!-- 패턴 C: 캡션 -->
+      <p class="caption" style="margin-bottom:10px;">💡 조건이 많을수록 조합 수가 급격히 늘어납니다. 5단계에서 예상 수를 확인하세요.</p>
+      <div style="background:#f8f9fa;border:1px solid #dee2e6;border-radius:6px;padding:12px;font-size:0.85rem;color:#6c757d;">
+        📁 조명 / 날씨 / 도로 환경 … (expander 형태로 표시)
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Step 4 -->
+    <div style="margin-bottom:18px;">
+      <div class="section-header">
+        <span class="section-title" style="font-size:1rem;">4. Extension 입력</span>
+        <span class="step-badge active">4 / 6</span>
+      </div>
+      <!-- 패턴 A: 주황 -->
+      <div class="info-banner orange">
+        🔌 Core ODD로 표현할 수 없는 추가 조건을 자유롭게 정의합니다. Extension도 조건조합 Cartesian Product에 포함됩니다.
+      </div>
+      <div class="grid-2" style="margin-bottom:8px;">
+        <div class="field-group" style="margin-bottom:0;">
+          <div class="field-label">
+            카테고리
+            <div class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <div class="tooltip-box">target: 검출 대상 조건 (물체, 거리, 속도 등)
+vehicle: 자차 조건 (속도, 차선, 전조등 등)
+sensor: 카메라 조건 (bokeh, blur 등)
+environmental: 특수 환경 (모래폭풍 등)</div>
+            </div>
+          </div>
+          <select class="field-select"><option>target — 타겟 조건</option></select>
+        </div>
+        <div class="field-group" style="margin-bottom:0;">
+          <div class="field-label">표시명</div>
+          <input class="field-input" placeholder="예: 날씨, 자차 기동" />
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-label">
+          값 목록
+          <div class="tooltip-wrap">
+            <span class="tooltip-icon">?</span>
+            <div class="tooltip-box">쉼표(,)로 구분하여 입력
+예) 맑음, 흐림, 비, 눈</div>
+          </div>
+        </div>
+        <input class="field-input" placeholder="예: 맑음, 흐림, 비, 눈" />
+        <!-- 패턴 C: 캡션 -->
+        <p class="caption">💡 Extension이 없어도 Core ODD만으로 시나리오 생성이 가능합니다.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Step 5 -->
+    <div style="margin-bottom:18px;">
+      <div class="section-header">
+        <span class="section-title" style="font-size:1rem;">5. 조합 수 예상</span>
+        <span class="step-badge active">5 / 6</span>
+      </div>
+      <div class="info-banner">
+        🔢 선택한 조건들의 Cartesian Product 결과 수를 미리 확인합니다. 조합 수가 많으면 '최종 조건조합 테이블'의 일괄 설정을 활용하세요.
+      </div>
+      <div class="metric-box">
+        <div class="metric-label">예상 시나리오 수</div>
+        <div class="metric-value">48</div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Step 6 -->
+    <div style="margin-bottom:18px;">
+      <div class="section-header">
+        <span class="section-title" style="font-size:1rem;">6. Scenario 생성</span>
+        <span class="step-badge active">6 / 6</span>
+      </div>
+      <div class="info-banner">
+        ⚡ 조건 선택이 완료되었으면 버튼을 눌러 조건조합을 생성합니다. 생성 후 미리보기를 확인하고 이상이 없으면 저장 버튼을 누르세요.
+      </div>
+      <button class="btn btn-primary">🚀 Scenario 생성</button>
+    </div>
+
+    <hr>
+
+    <!-- 저장 버튼 -->
+    <div style="display:flex;gap:12px;align-items:center;">
+      <button class="btn btn-success">✅ 이 시나리오 저장</button>
+      <button class="btn btn-secondary">🔄 초기화</button>
+      <span class="caption" style="margin-top:0;">💡 6단계에서 Scenario를 생성한 후 저장할 수 있습니다.</span>
+    </div>
+  </div>
+
+  <!-- ════ 최종 조건조합 테이블 ════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">최종 조건조합 테이블</span>
+    </div>
+    <!-- 패턴 A: 초록 -->
+    <div class="info-banner green">
+      📊 모든 시나리오 그룹의 조건조합이 통합 표시됩니다.<br>
+      수량·우선순위·메모를 입력한 후 반드시 <b>💾 수량/우선순위 저장</b> 버튼을 눌러야 반영됩니다.
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <span style="font-size:0.88rem;font-weight:600;">수량 단위</span>
+      <div class="tooltip-wrap">
+        <span class="tooltip-icon">?</span>
+        <div class="tooltip-box">frame: Feature별 프레임 수 입력 (라벨링)
+hour: 시간 단위 수량
+case: 케이스(사례) 단위 수량</div>
+      </div>
+      <label style="font-size:0.88rem;cursor:pointer;"><input type="radio" name="unit" checked /> frame</label>
+      <label style="font-size:0.88rem;cursor:pointer;"><input type="radio" name="unit" /> hour</label>
+      <label style="font-size:0.88rem;cursor:pointer;"><input type="radio" name="unit" /> case</label>
+    </div>
+
+    <div style="background:#f8f9fa;border:1px solid #dee2e6;border-radius:6px;overflow:auto;margin-bottom:12px;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+        <thead>
+          <tr style="background:#e9ecef;">
+            <th style="padding:8px;text-align:left;border-bottom:1px solid #dee2e6;">시나리오 그룹</th>
+            <th style="padding:8px;text-align:left;border-bottom:1px solid #dee2e6;">No</th>
+            <th style="padding:8px;text-align:left;border-bottom:1px solid #dee2e6;">지역</th>
+            <th style="padding:8px;text-align:left;border-bottom:1px solid #dee2e6;">조도</th>
+            <th style="padding:8px;text-align:right;border-bottom:1px solid #dee2e6;background:#E8D5F5;">3DP OD (frame)</th>
+            <th style="padding:8px;text-align:right;border-bottom:1px solid #dee2e6;background:#E8D5F5;">LPSD (frame)</th>
+            <th style="padding:8px;text-align:left;border-bottom:1px solid #dee2e6;background:#FCE4D6;">우선순위</th>
+            <th style="padding:8px;text-align:left;border-bottom:1px solid #dee2e6;background:#FCE4D6;">메모</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:7px 8px;">야간 주차장</td><td style="padding:7px 8px;">1</td><td>KOR</td><td>야간</td><td style="padding:7px 8px;text-align:right;">5,000</td><td style="padding:7px 8px;text-align:right;">10,000</td><td style="padding:7px 8px;">높음</td><td style="padding:7px 8px;color:#adb5bd;">-</td></tr>
+          <tr style="background:#fafafa;"><td style="padding:7px 8px;">야간 주차장</td><td>2</td><td>KOR</td><td>야간</td><td style="padding:7px 8px;text-align:right;">3,000</td><td style="padding:7px 8px;text-align:right;">8,000</td><td style="padding:7px 8px;">중간</td><td style="padding:7px 8px;color:#adb5bd;">-</td></tr>
+          <tr><td style="padding:7px 8px;">우천 야간</td><td>1</td><td>USA</td><td>야간</td><td style="padding:7px 8px;text-align:right;">2,000</td><td style="padding:7px 8px;text-align:right;">5,000</td><td style="padding:7px 8px;">낮음</td><td style="padding:7px 8px;color:#adb5bd;">-</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="btn btn-primary">💾 수량/우선순위 저장</button>
+  </div>
+
+  <!-- ════ Submit ════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">Submit</span>
+    </div>
+    <!-- 패턴 A: 보라 -->
+    <div class="info-banner purple">
+      🚀 모든 정보를 확인하고 요청서를 저장합니다. 저장 후 Excel · JSON 파일로 다운로드할 수 있습니다.
+    </div>
+    <div class="grid-3" style="margin-bottom:16px;">
+      <div class="metric-box"><div class="metric-label">시나리오 그룹</div><div class="metric-value">2개</div></div>
+      <div class="metric-box"><div class="metric-label">총 조건조합</div><div class="metric-value">12개</div></div>
+      <div class="metric-box"><div class="metric-label">총 Qty</div><div class="metric-value">33,000</div></div>
+    </div>
+    <div style="display:flex;gap:12px;">
+      <button class="btn btn-success" style="flex:1;">💾 JSON으로 저장</button>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

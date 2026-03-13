@@ -1,0 +1,2114 @@
+{
+  "version": "2.7",
+  "super_classes": {
+    "Scenery": {
+      "name": "Scenery",
+      "classes": {
+        "drivable_area_type": {
+          "name": "drivable_area_type",
+          "attributes": {
+            "da_main_type": {
+              "attribute_key": "da_main_type",
+              "attribute_label_eng": "Drive Main Type",
+              "values": [
+                {
+                  "value_code": "public_road_highway",
+                  "label_kor": "고속도로",
+                  "label_eng": "Highway"
+                },
+                {
+                  "value_code": "public_road_city",
+                  "label_kor": "도시도로",
+                  "label_eng": "City"
+                },
+                {
+                  "value_code": "public_road_rural",
+                  "label_kor": "외곽도로",
+                  "label_eng": "Rural"
+                },
+                {
+                  "value_code": "parking_lot_outdoor",
+                  "label_kor": "야외주차장",
+                  "label_eng": "Outdoor Parking"
+                },
+                {
+                  "value_code": "parking_lot_indoor",
+                  "label_kor": "실내주차장",
+                  "label_eng": "Indoor Parking"
+                },
+                {
+                  "value_code": "parking_lot_other",
+                  "label_kor": "기타주차장",
+                  "label_eng": "Other Parking"
+                },
+                {
+                  "value_code": "other_outdoor",
+                  "label_kor": "기타야외공간",
+                  "label_eng": "Other Outdoor"
+                },
+                {
+                  "value_code": "other_indoor",
+                  "label_kor": "기타실내공간",
+                  "label_eng": "Other Indoor"
+                }
+              ],
+              "attribute_label_kor": "주 도로 유형",
+              "product_scenario": "common",
+              "required": true
+            },
+            "da_sub_type": {
+              "attribute_key": "da_sub_type",
+              "attribute_label_eng": "Drive Sub Type",
+              "values": [
+                {
+                  "value_code": "tollgate_entry",
+                  "label_kor": "톨게이트진입",
+                  "label_eng": "Tollgate Entry"
+                },
+                {
+                  "value_code": "tollgate_exit",
+                  "label_kor": "톨게이트진출",
+                  "label_eng": "Tollgate Exit"
+                },
+                {
+                  "value_code": "gas_station",
+                  "label_kor": "가스및주유충전소",
+                  "label_eng": "Gas Station"
+                },
+                {
+                  "value_code": "tunnel_entrance",
+                  "label_kor": "터널입구",
+                  "label_eng": "Tunnel Entrance"
+                },
+                {
+                  "value_code": "tunnel_inside",
+                  "label_kor": "터널내부",
+                  "label_eng": "Tunnel Inside"
+                },
+                {
+                  "value_code": "tunnel_exit",
+                  "label_kor": "터널출구",
+                  "label_eng": "Tunnel Exit"
+                },
+                {
+                  "value_code": "junction",
+                  "label_kor": "교차로",
+                  "label_eng": "junction"
+                },
+                {
+                  "value_code": "other",
+                  "label_kor": "기타장소",
+                  "label_eng": "Other"
+                },
+                {
+                  "value_code": "no_da_sub_type",
+                  "label_kor": "장소 해당 없음",
+                  "label_eng": "No Da Sub Type"
+                }
+              ],
+              "attribute_label_kor": "부 도로 유형",
+              "product_scenario": "common",
+              "required": false
+            }
+          }
+        },
+        "drivable_area_surface": {
+          "name": "drivable_area_surface",
+          "attributes": {
+            "da_road_surface_material": {
+              "attribute_key": "da_road_surface_material",
+              "attribute_label_eng": "Drive Road surface Material",
+              "values": [
+                {
+                  "value_code": "asphalt",
+                  "label_kor": "아스팔트",
+                  "label_eng": "Asphalt"
+                },
+                {
+                  "value_code": "concrete",
+                  "label_kor": "콘크리트",
+                  "label_eng": "Concrete"
+                },
+                {
+                  "value_code": "soil_or_pebble",
+                  "label_kor": "흙 또는 자갈",
+                  "label_eng": "Soil or Pebble"
+                },
+                {
+                  "value_code": "brick",
+                  "label_kor": "벽돌",
+                  "label_eng": "Brick"
+                },
+                {
+                  "value_code": "other",
+                  "label_kor": "기타",
+                  "label_eng": "Other"
+                },
+                {
+                  "value_code": "unknown_da_road_surface_material",
+                  "label_kor": "도로 재질 알 수 없음",
+                  "label_eng": "Unknown Da Road Surface Material"
+                },
+                {
+                  "value_code": "no_da_road_surface_material",
+                  "label_kor": "도로 재질 해당 없음",
+                  "label_eng": "No Da Road surface Material"
+                }
+              ],
+              "attribute_label_kor": "도로 포장 재질",
+              "product_scenario": "common",
+              "required": false
+            },
+            "da_road_surface_condition": {
+              "attribute_key": "da_road_surface_condition",
+              "attribute_label_eng": "Drive Road Surface Condition",
+              "values": [
+                {
+                  "value_code": "wetness_no",
+                  "label_kor": "젖음 없음(건조)",
+                  "label_eng": "Wetness No"
+                },
+                {
+                  "value_code": "wetness_light",
+                  "label_kor": "젖음 약함",
+                  "label_eng": "Wetness Light"
+                },
+                {
+                  "value_code": "wetness_medium",
+                  "label_kor": "젖음 중간",
+                  "label_eng": "Wetness Medium"
+                },
+                {
+                  "value_code": "wetness_extreme",
+                  "label_kor": "젖음 강함",
+                  "label_eng": "Wetness Extreme"
+                },
+                {
+                  "value_code": "snow_no",
+                  "label_kor": "눈 없음",
+                  "label_eng": "Snow No"
+                },
+                {
+                  "value_code": "snow_light",
+                  "label_kor": "눈 약함",
+                  "label_eng": "Snow Light"
+                },
+                {
+                  "value_code": "snow_medium",
+                  "label_kor": "눈 중간",
+                  "label_eng": "Snow Medium"
+                },
+                {
+                  "value_code": "snow_extreme",
+                  "label_kor": "눈 강함",
+                  "label_eng": "Snow Extreme"
+                },
+                {
+                  "value_code": "light_reflection_no",
+                  "label_kor": "반사 없음",
+                  "label_eng": "Light Reflection No"
+                },
+                {
+                  "value_code": "light_reflection_light",
+                  "label_kor": "반사 약함",
+                  "label_eng": "Light Reflection Light"
+                },
+                {
+                  "value_code": "light_reflection_medium",
+                  "label_kor": "반사 중간",
+                  "label_eng": "Light Reflection Medium"
+                },
+                {
+                  "value_code": "light_reflection_extreme",
+                  "label_kor": "반사 강함",
+                  "label_eng": "Light Reflection Extreme"
+                },
+                {
+                  "value_code": "other_no",
+                  "label_kor": "기타 없음",
+                  "label_eng": "Other No"
+                },
+                {
+                  "value_code": "other_yes",
+                  "label_kor": "기타 있음",
+                  "label_eng": "Other Yes"
+                },
+                {
+                  "value_code": "unknown_da_road_surface_condition",
+                  "label_kor": "도로 표면 상태 알 수 없음",
+                  "label_eng": "Unknown Da Road Surface Condition"
+                },
+                {
+                  "value_code": "no_da_road_surface_condition",
+                  "label_kor": "도로 표면 상태 해당 없음",
+                  "label_eng": "No Da Road Surface Condition"
+                }
+              ],
+              "attribute_label_kor": "도로 포장 상태",
+              "product_scenario": "common",
+              "required": false
+            },
+            "da_road_surface_features": {
+              "attribute_key": "da_road_surface_features",
+              "attribute_label_eng": "Drive Road Surface Features",
+              "values": [
+                {
+                  "value_code": "roadmarking_safety_zone",
+                  "label_kor": "안전 구역 표시",
+                  "label_eng": "Roadmarking Safety Zone"
+                },
+                {
+                  "value_code": "crosswalk_zebra",
+                  "label_kor": "횡단보도 지브라",
+                  "label_eng": "Crosswalk Zebra"
+                },
+                {
+                  "value_code": "crosswalk_dashed_solid",
+                  "label_kor": "횡단보도 점선 실선",
+                  "label_eng": "Crosswalk Dashed Solid"
+                },
+                {
+                  "value_code": "pothole",
+                  "label_kor": "포트홀",
+                  "label_eng": "Pothole"
+                },
+                {
+                  "value_code": "speed_bump",
+                  "label_kor": "과속방지턱",
+                  "label_eng": "Speed Bump"
+                },
+                {
+                  "value_code": "shadowed_lane",
+                  "label_kor": "그림자 차로",
+                  "label_eng": "Shadowed Lane"
+                },
+                {
+                  "value_code": "no_da_road_surface_features",
+                  "label_kor": "도로 표면 특징 해당 없음",
+                  "label_eng": "No Da Road Surface Features"
+                }
+              ],
+              "attribute_label_kor": "도로 표면 특징",
+              "product_scenario": "common",
+              "required": false
+            },
+            "da_parking_space_surface_material": {
+              "attribute_key": "da_parking_space_surface_material",
+              "attribute_label_eng": "Drive Parking Space Surface Material",
+              "values": [
+                {
+                  "value_code": "asphalt",
+                  "label_kor": "아스팔트",
+                  "label_eng": "Asphalt"
+                },
+                {
+                  "value_code": "concrete",
+                  "label_kor": "콘크리트",
+                  "label_eng": "Concrete"
+                },
+                {
+                  "value_code": "coated",
+                  "label_kor": "코팅",
+                  "label_eng": "Coated"
+                },
+                {
+                  "value_code": "unpaved",
+                  "label_kor": "비포장",
+                  "label_eng": "Unpaved"
+                },
+                {
+                  "value_code": "brick",
+                  "label_kor": "벽돌",
+                  "label_eng": "Brick"
+                },
+                {
+                  "value_code": "lawn",
+                  "label_kor": "잔디",
+                  "label_eng": "Lawn"
+                },
+                {
+                  "value_code": "other",
+                  "label_kor": "기타",
+                  "label_eng": "Other"
+                },
+                {
+                  "value_code": "unknown_da_parking_space_surface_material",
+                  "label_kor": "주차바닥 표면 재질 알 수 없음",
+                  "label_eng": "Unknown Da Parking Space Surface Material"
+                },
+                {
+                  "value_code": "no_da_parking_space_surface_material",
+                  "label_kor": "주차바닥 표면 재질 해당 없음",
+                  "label_eng": "No Da Parking Space Surface Material"
+                }
+              ],
+              "attribute_label_kor": "주차공간 바닥 재질",
+              "product_scenario": "parking",
+              "required": false
+            },
+            "da_parking_space_surface_condition": {
+              "attribute_key": "da_parking_space_surface_condition",
+              "attribute_label_eng": "Drive Parking Space Surface Condition",
+              "values": [
+                {
+                  "value_code": "wetness_no",
+                  "label_kor": "젖음 없음",
+                  "label_eng": "Wetness No"
+                },
+                {
+                  "value_code": "wetness_light",
+                  "label_kor": "젖음 약함",
+                  "label_eng": "Wetness Light"
+                },
+                {
+                  "value_code": "wetness_medium",
+                  "label_kor": "젖음 중간",
+                  "label_eng": "Wetness Medium"
+                },
+                {
+                  "value_code": "wetness_extreme",
+                  "label_kor": "젖음 강함",
+                  "label_eng": "Wetness Extreme"
+                },
+                {
+                  "value_code": "snow_no",
+                  "label_kor": "눈 없음",
+                  "label_eng": "Snow No"
+                },
+                {
+                  "value_code": "snow_light",
+                  "label_kor": "눈 약함",
+                  "label_eng": "Snow Light"
+                },
+                {
+                  "value_code": "snow_medium",
+                  "label_kor": "눈 중간",
+                  "label_eng": "Snow Medium"
+                },
+                {
+                  "value_code": "snow_extreme",
+                  "label_kor": "눈 강함",
+                  "label_eng": "Snow Extreme"
+                },
+                {
+                  "value_code": "ice_no",
+                  "label_kor": "얼음 없음",
+                  "label_eng": "Ice No"
+                },
+                {
+                  "value_code": "ice_light",
+                  "label_kor": "얼음 약함",
+                  "label_eng": "Ice Light"
+                },
+                {
+                  "value_code": "ice_medium",
+                  "label_kor": "얼음 중간",
+                  "label_eng": "Ice Medium"
+                },
+                {
+                  "value_code": "ice_extreme",
+                  "label_kor": "얼음 강함",
+                  "label_eng": "Ice Extreme"
+                },
+                {
+                  "value_code": "light_reflection_no",
+                  "label_kor": "반사 없음",
+                  "label_eng": "Light Reflection No"
+                },
+                {
+                  "value_code": "light_reflection_light",
+                  "label_kor": "반사 약함",
+                  "label_eng": "Light Reflection Light"
+                },
+                {
+                  "value_code": "light_reflection_medium",
+                  "label_kor": "반사 중간",
+                  "label_eng": "Light Reflection Medium"
+                },
+                {
+                  "value_code": "light_reflection_extreme",
+                  "label_kor": "반사 강함",
+                  "label_eng": "Light Reflection Extreme"
+                },
+                {
+                  "value_code": "leaf_covered_no",
+                  "label_kor": "낙엽 없음",
+                  "label_eng": "Leaf Covered No"
+                },
+                {
+                  "value_code": "leaf_covered_light",
+                  "label_kor": "낙엽 약함",
+                  "label_eng": "Leaf Covered Light"
+                },
+                {
+                  "value_code": "leaf_covered_medium",
+                  "label_kor": "낙엽 중간",
+                  "label_eng": "Leaf Covered Medium"
+                },
+                {
+                  "value_code": "leaf_covered_extreme",
+                  "label_kor": "낙엽 강함",
+                  "label_eng": "Leaf Covered Extreme"
+                },
+                {
+                  "value_code": "other_no",
+                  "label_kor": "기타 없음",
+                  "label_eng": "Other No"
+                },
+                {
+                  "value_code": "other_yes",
+                  "label_kor": "기타 있음",
+                  "label_eng": "Other Yes"
+                },
+                {
+                  "value_code": "unknown_da_parking_space_surface_condition",
+                  "label_kor": "주차바닥 표면 상태 알 수 없음",
+                  "label_eng": "Unknown Da Parking Space Surface Condition"
+                },
+                {
+                  "value_code": "no_da_parking_space_surface_condition",
+                  "label_kor": "주차바닥 표면 상태 해당 없음",
+                  "label_eng": "No Da Parking Space Surface Condition"
+                }
+              ],
+              "attribute_label_kor": "주차공간 바닥 상태",
+              "product_scenario": "parking",
+              "required": false
+            }
+          }
+        },
+        "drivable_area_geometry": {
+          "name": "drivable_area_geometry",
+          "attributes": {
+            "da_road_longitudinal_slope": {
+              "attribute_key": "da_road_longitudinal_slope",
+              "attribute_label_eng": "Drive Road Longitudinal Slope",
+              "values": [
+                {
+                  "value_code": "uphill",
+                  "label_kor": "오르막",
+                  "label_eng": "Uphill"
+                },
+                {
+                  "value_code": "level",
+                  "label_kor": "평지",
+                  "label_eng": "Level"
+                },
+                {
+                  "value_code": "downhill",
+                  "label_kor": "내리막",
+                  "label_eng": "Downhill"
+                },
+                {
+                  "value_code": "unknow_da_road_longitudinal_slope",
+                  "label_kor": "도로 경사 알 수 없음",
+                  "label_eng": "Unknown Da Road Longitudinal Slope"
+                },
+                {
+                  "value_code": "no_da_road_longitudinal_slope",
+                  "label_kor": "도로 경사 해당 없음",
+                  "label_eng": "No Da Road Longitudinal Slope"
+                }
+              ],
+              "attribute_label_kor": "도로 경사",
+              "product_scenario": "driving",
+              "required": false
+            },
+            "da_road_lateral_curvature": {
+              "attribute_key": "da_road_lateral_curvature",
+              "attribute_label_eng": "Drive Road Lateral Curvature",
+              "values": [
+                {
+                  "value_code": "straight",
+                  "label_kor": "직선",
+                  "label_eng": "Straight"
+                },
+                {
+                  "value_code": "low_curvature",
+                  "label_kor": "곡률 낮음",
+                  "label_eng": "Low Curvature"
+                },
+                {
+                  "value_code": "high_curvature",
+                  "label_kor": "곡률 큼",
+                  "label_eng": "High Curvature"
+                },
+                {
+                  "value_code": "unknow_da_road_lateral_curvature",
+                  "label_kor": "도로 곡률 알 수 없음",
+                  "label_eng": "Unknown Da Road Lateral Curvature"
+                },
+                {
+                  "value_code": "no_da_road_lateral_curvature",
+                  "label_kor": "도로 곡률 해당 없음",
+                  "label_eng": "No Da Road Lateral Curvature"
+                }
+              ],
+              "attribute_label_kor": "도로 곡률",
+              "product_scenario": "driving",
+              "required": false
+            },
+            "da_parking_space_driveway_slope": {
+              "attribute_key": "da_parking_space_driveway_slope",
+              "attribute_label_eng": "Drive Parking Space Driveway Slope",
+              "values": [
+                {
+                  "value_code": "uphill",
+                  "label_kor": "오르막",
+                  "label_eng": "Uphill"
+                },
+                {
+                  "value_code": "level",
+                  "label_kor": "평지",
+                  "label_eng": "Level"
+                },
+                {
+                  "value_code": "downhill",
+                  "label_kor": "내리막",
+                  "label_eng": "Downhill"
+                },
+                {
+                  "value_code": "unknown_da_parking_space_driveway_slope",
+                  "label_kor": "진입로 경사 알 수 없음",
+                  "label_eng": "Unknown Da Parking Space Driveway Slope"
+                },
+                {
+                  "value_code": "no_da_parking_space_driveway_slope",
+                  "label_kor": "진입로 경사 해당 없음",
+                  "label_eng": "No Da Parking Space Driveway Slope"
+                }
+              ],
+              "attribute_label_kor": "주차장 진입로 경사",
+              "product_scenario": "parking",
+              "required": false
+            },
+            "da_parking_space_stall_slope": {
+              "attribute_key": "da_parking_space_stall_slope",
+              "attribute_label_eng": "Drive Parking Space Stall Slope",
+              "values": [
+                {
+                  "value_code": "uphill",
+                  "label_kor": "오르막",
+                  "label_eng": "Uphill"
+                },
+                {
+                  "value_code": "level",
+                  "label_kor": "평지",
+                  "label_eng": "Level"
+                },
+                {
+                  "value_code": "downhill",
+                  "label_kor": "내리막",
+                  "label_eng": "Downhill"
+                },
+                {
+                  "value_code": "unknown_da_parking_space_stall_slope",
+                  "label_kor": "주차면 경사 알 수 없음",
+                  "label_eng": "Unknown Da Parking Space Stall Slope"
+                },
+                {
+                  "value_code": "no_da_parking_space_stall_slope",
+                  "label_kor": "주차면 경사 해당 없음",
+                  "label_eng": "No Da Parking Space Stall Slope"
+                }
+              ],
+              "attribute_label_kor": "주차구획 경사",
+              "product_scenario": "parking",
+              "required": false
+            }
+          }
+        },
+        "drivable_area_lpsd_detail": {
+          "name": "drivable_area_lpsd_detail",
+          "attributes": {
+            "da_lpsd_parking_angle": {
+              "attribute_key": "da_lpsd_parking_angle",
+              "attribute_label_eng": "Drive LPSD Parking Angle",
+              "values": [
+                {
+                  "value_code": "perpendicular",
+                  "label_kor": "직각",
+                  "label_eng": "Perpendicular"
+                },
+                {
+                  "value_code": "parallel",
+                  "label_kor": "평행",
+                  "label_eng": "Parallel"
+                },
+                {
+                  "value_code": "oblique_parallelogram",
+                  "label_kor": "평행사변형 대각",
+                  "label_eng": "Oblique Parallelogram"
+                },
+                {
+                  "value_code": "oblique_rectangle",
+                  "label_kor": "직사각형 대각",
+                  "label_eng": "Oblique Rectangle"
+                },
+                {
+                  "value_code": "perpendicular_and_parallel",
+                  "label_kor": "직각+평행",
+                  "label_eng": "Perpendicular and Parallel"
+                },
+                {
+                  "value_code": "herringbone",
+                  "label_kor": "헤링본",
+                  "label_eng": "Herringbone"
+                },
+                {
+                  "value_code": "atypical",
+                  "label_kor": "사다리꼴 등 특이한경우",
+                  "label_eng": "Atypical"
+                },
+                {
+                  "value_code": "no_da_lpsd_parking_angle",
+                  "label_kor": "주차 각도 해당 없음",
+                  "label_eng": "No Da LPSD Parking Angle"
+                }
+              ],
+              "attribute_label_kor": "주차 각도",
+              "product_scenario": "parking",
+              "required": false
+            },
+            "da_lpsd_line_shape": {
+              "attribute_key": "da_lpsd_line_shape",
+              "attribute_label_eng": "Drive LPSD Line Shape",
+              "values": [
+                {
+                  "value_code": "single_selection_line_closed",
+                  "label_kor": "단일 닫힌 선",
+                  "label_eng": "Single Selection Line Closed"
+                },
+                {
+                  "value_code": "single_selection_line_open",
+                  "label_kor": "단일 열린 선",
+                  "label_eng": "Single Selection Line Open"
+                },
+                {
+                  "value_code": "double_line_open",
+                  "label_kor": "이중 열린 선",
+                  "label_eng": "Double Line Open"
+                },
+                {
+                  "value_code": "double_line_medium_closed_round_end",
+                  "label_kor": "이중 반닫힘 둥근 끝",
+                  "label_eng": "Double Line Half Closed Round End"
+                },
+                {
+                  "value_code": "double_line_closed_round_end",
+                  "label_kor": "이중 닫힘 둥근 끝",
+                  "label_eng": "Double Line Closed Round End"
+                },
+                {
+                  "value_code": "double_line_closed_square_end",
+                  "label_kor": "이중 닫힘 각진 끝",
+                  "label_eng": "Double Line Closed Square End"
+                },
+                {
+                  "value_code": "single_selection_line_dotted",
+                  "label_kor": "단일 점선",
+                  "label_eng": "Single Selection Line Dotted"
+                },
+                {
+                  "value_code": "single_selection_side_line",
+                  "label_kor": "단일 측면선",
+                  "label_eng": "Single Selection Side Line"
+                },
+                {
+                  "value_code": "very_thick_line",
+                  "label_kor": "매우 굵은 선",
+                  "label_eng": "Very Thick Line"
+                },
+                {
+                  "value_code": "corner_t",
+                  "label_kor": "코너 T",
+                  "label_eng": "Corner T"
+                },
+                {
+                  "value_code": "no_line",
+                  "label_kor": "선 없음",
+                  "label_eng": "No Line"
+                },
+                {
+                  "value_code": "no_da_lpsd_line_shape",
+                  "label_kor": "주차라인 형태 해당 없음",
+                  "label_eng": "No Da LPSD Line Shape"
+                }
+              ],
+              "attribute_label_kor": "주차선 형태",
+              "product_scenario": "parking",
+              "required": false
+            },
+            "da_lpsd_line_color": {
+              "attribute_key": "da_lpsd_line_color",
+              "attribute_label_eng": "Drive LPSD Line Color",
+              "values": [
+                {
+                  "value_code": "white",
+                  "label_kor": "흰색",
+                  "label_eng": "White"
+                },
+                {
+                  "value_code": "yellow",
+                  "label_kor": "노란색",
+                  "label_eng": "Yellow"
+                },
+                {
+                  "value_code": "blue",
+                  "label_kor": "파란색",
+                  "label_eng": "Blue"
+                },
+                {
+                  "value_code": "green",
+                  "label_kor": "초록색",
+                  "label_eng": "Green"
+                },
+                {
+                  "value_code": "other",
+                  "label_kor": "기타색상",
+                  "label_eng": "Other"
+                },
+                {
+                  "value_code": "no_da_lpsd_line_color",
+                  "label_kor": "주차라인 색상 해당 없음",
+                  "label_eng": "No Da LPSD Line Color"
+                }
+              ],
+              "attribute_label_kor": "주차선 색상",
+              "product_scenario": "parking",
+              "required": false
+            },
+            "da_lpsd_line_condition": {
+              "attribute_key": "da_lpsd_line_condition",
+              "attribute_label_eng": "Drive LPSD Line Condition",
+              "values": [
+                {
+                  "value_code": "clear",
+                  "label_kor": "선명함",
+                  "label_eng": "Clear"
+                },
+                {
+                  "value_code": "unclear",
+                  "label_kor": "불분명",
+                  "label_eng": "Unclear"
+                },
+                {
+                  "value_code": "no_da_lpsd_line_condition",
+                  "label_kor": "주차라인 상태 해당 없음",
+                  "label_eng": "No Da LPSD Line Condition"
+                }
+              ],
+              "attribute_label_kor": "주차선 상태",
+              "product_scenario": "parking",
+              "required": false
+            },
+            "da_lpsd_special_type": {
+              "attribute_key": "da_lpsd_special_type",
+              "attribute_label_eng": "Drive LPSD Special Type",
+              "values": [
+                {
+                  "value_code": "normal",
+                  "label_kor": "일반",
+                  "label_eng": "Normal"
+                },
+                {
+                  "value_code": "disabled",
+                  "label_kor": "장애인 전용",
+                  "label_eng": "Disabled"
+                },
+                {
+                  "value_code": "female_only",
+                  "label_kor": "여성 전용",
+                  "label_eng": "Female Only"
+                },
+                {
+                  "value_code": "electric_vehicle_only",
+                  "label_kor": "전기차 전용",
+                  "label_eng": "EV Only"
+                },
+                {
+                  "value_code": "other",
+                  "label_kor": "기타 전용",
+                  "label_eng": "Other"
+                },
+                {
+                  "value_code": "no_da_lpsd_special_type",
+                  "label_kor": "주차 특수 유형 해당 없음",
+                  "label_eng": "No Da LPSD Special Type"
+                }
+              ],
+              "attribute_label_kor": "특수 주차 유형",
+              "product_scenario": "parking",
+              "required": false
+            },
+            "da_lpsd_stopper_info": {
+              "attribute_key": "da_lpsd_stopper_info",
+              "attribute_label_eng": "Drive LPSD Stopper Info",
+              "values": [
+                {
+                  "value_code": "single_selection_stopper",
+                  "label_kor": "단일 스토퍼",
+                  "label_eng": "Single Stopper"
+                },
+                {
+                  "value_code": "dual_stopper",
+                  "label_kor": "이중 스토퍼",
+                  "label_eng": "Dual Stopper"
+                },
+                {
+                  "value_code": "other_object",
+                  "label_kor": "기타 물체",
+                  "label_eng": "Other Object"
+                },
+                {
+                  "value_code": "no_da_lpsd_stopper_info",
+                  "label_kor": "스토퍼 해당 없음",
+                  "label_eng": "No Da LPSD Stopper Info"
+                }
+              ],
+              "attribute_label_kor": "스토퍼 정보",
+              "product_scenario": "parking",
+              "required": false
+            },
+            "da_lpsd_other_info": {
+              "attribute_key": "da_lpsd_other_info",
+              "attribute_label_eng": "Drive LPSD Other Info",
+              "values": [
+                {
+                  "value_code": "pattern_that_can_cause_fp",
+                  "label_kor": "오류 유발 패턴",
+                  "label_eng": "False Positive Pattern"
+                },
+                {
+                  "value_code": "other_conditions",
+                  "label_kor": "기타 조건",
+                  "label_eng": "Other Conditions"
+                },
+                {
+                  "value_code": "no_da_lpsd_other_info",
+                  "label_kor": "주차 기타 정보 해당 없음",
+                  "label_eng": "No Da LPSD Other Info"
+                }
+              ],
+              "attribute_label_kor": "기타 정보",
+              "product_scenario": "parking",
+              "required": false
+            },
+            "da_lpsd_context_slot_size": {
+              "attribute_key": "da_lpsd_context_slot_size",
+              "attribute_label_eng": "Drive LPSD Context Slot Size",
+              "values": [
+                {
+                  "value_code": "small",
+                  "label_kor": "소형",
+                  "label_eng": "Small"
+                },
+                {
+                  "value_code": "normal",
+                  "label_kor": "보통",
+                  "label_eng": "Normal"
+                },
+                {
+                  "value_code": "large",
+                  "label_kor": "대형",
+                  "label_eng": "Large"
+                },
+                {
+                  "value_code": "no_da_lpsd_context_slot_size",
+                  "label_kor": "주차슬롯 크기 해당 없음",
+                  "label_eng": "No Da LPSD Context Slot Size"
+                }
+              ],
+              "attribute_label_kor": "주차 공간 크기",
+              "product_scenario": "parking",
+              "required": false
+            }
+          }
+        },
+        "drivable_area_npsd_detail": {
+          "name": "drivable_area_npsd_detail",
+          "attributes": {
+            "da_npsd_context_info_legacy": {
+              "attribute_key": "da_npsd_context_info_legacy",
+              "attribute_label_eng": "Drive NPSD Context Info Legacy",
+              "values": [
+                {
+                  "value_code": "parallel_parking",
+                  "label_kor": "평행 주차",
+                  "label_eng": "Parallel Parking  "
+                },
+                {
+                  "value_code": "parallel_parking_diagonal_curb",
+                  "label_kor": "평행 주차 (대각 연석)",
+                  "label_eng": "Parallel Parking Diagonal Curb  "
+                },
+                {
+                  "value_code": "parallel_parking_curved_curb",
+                  "label_kor": "평행 주차 (곡선 연석)",
+                  "label_eng": "Parallel Parking Curved Curb  "
+                },
+                {
+                  "value_code": "vertical_parking",
+                  "label_kor": "직각 주차",
+                  "label_eng": "Vertical Parking  "
+                },
+                {
+                  "value_code": "scene_npsd_driveway",
+                  "label_kor": "진입로 장면",
+                  "label_eng": "Scene NPSD Driveway  "
+                },
+                {
+                  "value_code": "scene_npsd_driveway_curb_only_no_cars",
+                  "label_kor": "연석만 있고 차량 없음",
+                  "label_eng": "Scene NPSD Driveway Curb Only No Cars  "
+                },
+                {
+                  "value_code": "scene_difficult_to_detect_npsd",
+                  "label_kor": "감지 어려운 장면",
+                  "label_eng": "Scene Difficult to Detect NPSD "
+                },
+                {
+                  "value_code": "scene_obstacles_included",
+                  "label_kor": "장애물 포함",
+                  "label_eng": "Scene Obstacles Included  "
+                },
+                {
+                  "value_code": "no_da_npsd_context_info_legacy",
+                  "label_kor": "NPSD 정보 해당 없음",
+                  "label_eng": "No Da NPSD Context Info Legacy"
+                }
+              ],
+              "attribute_label_kor": "NPSD 주차 정보",
+              "product_scenario": "parking",
+              "required": false
+            }
+          }
+        },
+        "drivable_area_lane_network": {
+          "name": "drivable_area_lane_network",
+          "attributes": {
+            "da_road_junction_type": {
+              "attribute_key": "da_road_junction_type",
+              "attribute_label_eng": "Drive Road Junction Type",
+              "values": [
+                {
+                  "value_code": "intersection",
+                  "label_kor": "교차로",
+                  "label_eng": "Intersection"
+                },
+                {
+                  "value_code": "roundabout",
+                  "label_kor": "회전교차로",
+                  "label_eng": "Roundabout"
+                },
+                {
+                  "value_code": "highway_ramp",
+                  "label_kor": "고속도로 램프",
+                  "label_eng": "Highway Ramp"
+                },
+                {
+                  "value_code": "entrance_or_exit_to_a_building",
+                  "label_kor": "건물 진출입로",
+                  "label_eng": "Entrance or Exit to a Building"
+                },
+                {
+                  "value_code": "no_da_road_junction_type",
+                  "label_kor": "교차로 유형 해당 없음",
+                  "label_eng": "No Da Road Junction Type"
+                }
+              ],
+              "attribute_label_kor": "교차로 유형",
+              "product_scenario": "driving",
+              "required": false
+            }
+          }
+        },
+        "drivable_area_lane_specification": {
+          "name": "drivable_area_lane_specification",
+          "attributes": {
+            "da_lane_marking_shape": {
+              "attribute_key": "da_lane_marking_shape",
+              "attribute_label_eng": "Drive Lane Marking Shape",
+              "values": [
+                {
+                  "value_code": "solid_line_lane",
+                  "label_kor": "실선 차선",
+                  "label_eng": "Solid Line"
+                },
+                {
+                  "value_code": "dotted_line_lane",
+                  "label_kor": "점선 차선",
+                  "label_eng": "Dotted Line"
+                },
+                {
+                  "value_code": "double_line_lane",
+                  "label_kor": "이중 차선",
+                  "label_eng": "Double Line"
+                },
+                {
+                  "value_code": "cats_eye_lane",
+                  "label_kor": "캣츠아이 차선",
+                  "label_eng": "Cats Eye Line"
+                },
+                {
+                  "value_code": "zigzag_lane",
+                  "label_kor": "지그재그 차선",
+                  "label_eng": "Zigzag Line"
+                },
+                {
+                  "value_code": "color_guidance_lane",
+                  "label_kor": "색상 유도 차선",
+                  "label_eng": "Color Guidance Line"
+                },
+                {
+                  "value_code": "no_da_lane_marking_shape",
+                  "label_kor": "차선 형태 해당 없음",
+                  "label_eng": "No Da Lane Marking Shape"
+                }
+              ],
+              "attribute_label_kor": "차선 형태",
+              "product_scenario": "driving",
+              "required": false
+            },
+            "da_lane_marking_condition": {
+              "attribute_key": "da_lane_marking_condition",
+              "attribute_label_eng": "Drive Lane Marking Condition",
+              "values": [
+                {
+                  "value_code": "lane_clean",
+                  "label_kor": "깨끗한 차선",
+                  "label_eng": "Clean Lane"
+                },
+                {
+                  "value_code": "painted_over_another",
+                  "label_kor": "위에 덧칠됨",
+                  "label_eng": "Painted Over"
+                },
+                {
+                  "value_code": "snow_or_dust_covered",
+                  "label_kor": "눈 또는 먼지 덮임",
+                  "label_eng": "Snow or Dust Covered"
+                },
+                {
+                  "value_code": "blurry",
+                  "label_kor": "흐림",
+                  "label_eng": "Blurry"
+                },
+                {
+                  "value_code": "no_da_lane_marking_condition",
+                  "label_kor": "차선 상태 해당 없음",
+                  "label_eng": "No Da Lane Marking Condition"
+                }
+              ],
+              "attribute_label_kor": "차선 상태",
+              "product_scenario": "common",
+              "required": false
+            },
+            "da_lane_marking_branching": {
+              "attribute_key": "da_lane_marking_branching",
+              "attribute_label_eng": "Drive Lane Marking Branching",
+              "values": [
+                {
+                  "value_code": "splitting",
+                  "label_kor": "분리",
+                  "label_eng": "Splitting"
+                },
+                {
+                  "value_code": "merging",
+                  "label_kor": "합류",
+                  "label_eng": "Merging"
+                },
+                {
+                  "value_code": "splitting_or_merging",
+                  "label_kor": "분리+합류",
+                  "label_eng": "Splitting+Merging"
+                },
+                {
+                  "value_code": "no_da_lane_marking_branching",
+                  "label_kor": "차선 분기 해당 없음",
+                  "label_eng": "No Da Lane Marking Branching"
+                }
+              ],
+              "attribute_label_kor": "차선 분기 여부",
+              "product_scenario": "driving",
+              "required": false
+            }
+          }
+        },
+        "non_drivable_area_surface": {
+          "name": "non_drivable_area_surface",
+          "attributes": {
+            "non_da_sidewalk_surface_condition": {
+              "attribute_key": "non_da_sidewalk_surface_condition",
+              "attribute_label_eng": "Non Drive Sidewalk Surface Condition",
+              "values": [
+                {
+                  "value_code": "snow_no",
+                  "label_kor": "인도 눈 없음",
+                  "label_eng": "Snow No"
+                },
+                {
+                  "value_code": "snow_light",
+                  "label_kor": "인도 눈 약함",
+                  "label_eng": "Snow Light"
+                },
+                {
+                  "value_code": "snow_medium",
+                  "label_kor": "인도 눈 중간",
+                  "label_eng": "Snow Medium"
+                },
+                {
+                  "value_code": "snow_extreme",
+                  "label_kor": "인도 눈 강함",
+                  "label_eng": "Snow Extreme"
+                },
+                {
+                  "value_code": "no_non_da_sidewalk_surface_condition",
+                  "label_kor": "인도 눈 해당 없음",
+                  "label_eng": "No Non Da Sidewalk Surface Condition"
+                }
+              ],
+              "attribute_label_kor": "보도 포장 상태",
+              "product_scenario": "driving",
+              "required": false
+            }
+          }
+        },
+        "special_structure": {
+          "name": "special_structure",
+          "attributes": {
+            "special_space_type": {
+              "attribute_key": "special_space_type",
+              "attribute_label_eng": "Special Space Type",
+              "values": [
+                {
+                  "value_code": "construction_zone",
+                  "label_kor": "공사 구역",
+                  "label_eng": "Construction Zone"
+                },
+                {
+                  "value_code": "tram_rail",
+                  "label_kor": "트램 선로",
+                  "label_eng": "Tram Rail"
+                },
+                {
+                  "value_code": "no_ss_type",
+                  "label_kor": "공간 유형 해당 없음",
+                  "label_eng": "No Special Space Type"
+                }
+              ],
+              "attribute_label_kor": "공간 유형",
+              "product_scenario": "driving",
+              "required": false
+            }
+          }
+        }
+      }
+    },
+    "Environmental_Conditions": {
+      "name": "Environmental_Conditions",
+      "classes": {
+        "time": {
+          "name": "time",
+          "attributes": {
+            "time_from_intensity": {
+              "attribute_key": "time_from_intensity",
+              "attribute_label_eng": "Time From Intensity",
+              "values": [
+                {
+                  "value_code": "day",
+                  "label_kor": "주간",
+                  "label_eng": "Day"
+                },
+                {
+                  "value_code": "dawn_evening",
+                  "label_kor": "새벽 또는 저녁",
+                  "label_eng": "Dawn Evening"
+                },
+                {
+                  "value_code": "night",
+                  "label_kor": "야간",
+                  "label_eng": "Night"
+                },
+                {
+                  "value_code": "unknown_time_from_intensity",
+                  "label_kor": "시간 알 수 없음",
+                  "label_eng": "Unknown Time From Intensity"
+                }
+              ],
+              "attribute_label_kor": "조도 영향에 따른 시간",
+              "product_scenario": "common",
+              "required": true
+            }
+          }
+        },
+        "illumination": {
+          "name": "illumination",
+          "attributes": {
+            "darkness": {
+              "attribute_key": "darkness",
+              "attribute_label_eng": "Darkness",
+              "values": [
+                {
+                  "value_code": "dark_no",
+                  "label_kor": "어두움 없음",
+                  "label_eng": "Darkness No"
+                },
+                {
+                  "value_code": "dark_light",
+                  "label_kor": "어두움 약함",
+                  "label_eng": "Darkness Light"
+                },
+                {
+                  "value_code": "dark_medium",
+                  "label_kor": "어두움 중간",
+                  "label_eng": "Darkness Medium"
+                },
+                {
+                  "value_code": "dark_extreme",
+                  "label_kor": "어두움 강함",
+                  "label_eng": "Darkness Extreme"
+                }
+              ],
+              "attribute_label_kor": "밝기",
+              "product_scenario": "common",
+              "required": false
+            },
+            "reflection_type": {
+              "attribute_key": "reflection_type",
+              "attribute_label_eng": "Reflection Type",
+              "values": [
+                {
+                  "value_code": "sun_light",
+                  "label_kor": "햇빛",
+                  "label_eng": "Sun Light"
+                },
+                {
+                  "value_code": "street_light",
+                  "label_kor": "가로등",
+                  "label_eng": "Street Light"
+                },
+                {
+                  "value_code": "indoor_light",
+                  "label_kor": "실내 조명",
+                  "label_eng": "Indoor Light"
+                },
+                {
+                  "value_code": "headlight",
+                  "label_kor": "전조등",
+                  "label_eng": "Headlight"
+                },
+                {
+                  "value_code": "other",
+                  "label_kor": "기타",
+                  "label_eng": "Other"
+                },
+                {
+                  "value_code": "no_reflection_type",
+                  "label_kor": "광원 해당 없음",
+                  "label_eng": "No Reflection Type"
+                }
+              ],
+              "attribute_label_kor": "광원",
+              "product_scenario": "common",
+              "required": false
+            },
+            "backlit_situation": {
+              "attribute_key": "backlit_situation",
+              "attribute_label_eng": "Backlit Situation",
+              "values": [
+                {
+                  "value_code": "backlit_situation_no",
+                  "label_kor": "역광 없음",
+                  "label_eng": "Backlit Situation No"
+                },
+                {
+                  "value_code": "backlit_situation_sun",
+                  "label_kor": "역광 약함",
+                  "label_eng": "Backlit Situation Light"
+                },
+                {
+                  "value_code": "backlit_situation_street",
+                  "label_kor": "역광 중간",
+                  "label_eng": "Backlit Situation Medium"
+                },
+                {
+                  "value_code": "backlit_situation_indoor",
+                  "label_kor": "역광 강함",
+                  "label_eng": "Backlit Situation Extreme"
+                }
+              ],
+              "attribute_label_kor": "역광 상황",
+              "product_scenario": "common",
+              "required": false
+            },
+            "shadow_harshness": {
+              "attribute_key": "shadow_harshness",
+              "attribute_label_eng": "Shadow Harshness",
+              "values": [
+                {
+                  "value_code": "shadow_harshness_no",
+                  "label_kor": "그림자 없음",
+                  "label_eng": "Shadow Harshness No"
+                },
+                {
+                  "value_code": "shadow_harshness_light",
+                  "label_kor": "그림자 약함",
+                  "label_eng": "Shadow Harshness Light"
+                },
+                {
+                  "value_code": "shadow_harshness_medium",
+                  "label_kor": "그림자 중간",
+                  "label_eng": "Shadow Harshness Medium"
+                },
+                {
+                  "value_code": "shadow_harshness_extreme",
+                  "label_kor": "그림자 강함",
+                  "label_eng": "Shadow Harshness Extreme"
+                }
+              ],
+              "attribute_label_kor": "그림자 강도",
+              "product_scenario": "common",
+              "required": false
+            }
+          }
+        },
+        "weather": {
+          "name": "weather",
+          "attributes": {
+            "atmospheric_condition": {
+              "attribute_key": "atmospheric_condition",
+              "attribute_label_eng": "Atmospheric Condition",
+              "values": [
+                {
+                  "value_code": "cloud_no",
+                  "label_kor": "흐림 없음",
+                  "label_eng": "Cloud No"
+                },
+                {
+                  "value_code": "cloud_light",
+                  "label_kor": "흐림 약함",
+                  "label_eng": "Cloud Light"
+                },
+                {
+                  "value_code": "cloud_medium",
+                  "label_kor": "흐림 중간",
+                  "label_eng": "Cloud Medium"
+                },
+                {
+                  "value_code": "cloud_extreme",
+                  "label_kor": "흐림 강함",
+                  "label_eng": "Cloud Extreme"
+                },
+                {
+                  "value_code": "fog_or_dust_no",
+                  "label_kor": "안개 먼지 없음",
+                  "label_eng": "Fog or Dust No"
+                },
+                {
+                  "value_code": "fog_or_dust_light",
+                  "label_kor": "안개 먼지 약함",
+                  "label_eng": "Fog or Dust Light"
+                },
+                {
+                  "value_code": "fog_or_dust_medium",
+                  "label_kor": "안개 먼지 중간",
+                  "label_eng": "Fog or Dust Medium"
+                },
+                {
+                  "value_code": "fog_or_dust_extreme",
+                  "label_kor": "안개 먼지 심함",
+                  "label_eng": "Fog or Dust Extreme"
+                },
+                {
+                  "value_code": "unknown_atmospheric_condition",
+                  "label_kor": "대기 상태 알 수 없음",
+                  "label_eng": "Unknown Atmospheric Condition"
+                }
+              ],
+              "attribute_label_kor": "대기 상태",
+              "product_scenario": "common",
+              "required": false
+            },
+            "derived_weather_legacy": {
+              "attribute_key": "derived_weather_legacy",
+              "attribute_label_eng": "Derived Weather Legacy",
+              "values": [
+                {
+                  "value_code": "clear_no",
+                  "label_kor": "맑음 없음",
+                  "label_eng": "Clear No"
+                },
+                {
+                  "value_code": "clear_light",
+                  "label_kor": "맑음 약함",
+                  "label_eng": "Clear Light"
+                },
+                {
+                  "value_code": "clear_medium",
+                  "label_kor": "맑음 중간",
+                  "label_eng": "Clear Medium"
+                },
+                {
+                  "value_code": "clear_extreme",
+                  "label_kor": "맑은 강함",
+                  "label_eng": "Clear Extreme"
+                },
+                {
+                  "value_code": "rainy_no",
+                  "label_kor": "비 없음",
+                  "label_eng": "Rainy No"
+                },
+                {
+                  "value_code": "rainy_light",
+                  "label_kor": "비 약함",
+                  "label_eng": "Rainy Light"
+                },
+                {
+                  "value_code": "rainy_medium",
+                  "label_kor": "비 중간",
+                  "label_eng": "Rainy Medium"
+                },
+                {
+                  "value_code": "rainy_extreme",
+                  "label_kor": "비 강함",
+                  "label_eng": "Rainy Extreme"
+                },
+                {
+                  "value_code": "snow_no",
+                  "label_kor": "눈 없음",
+                  "label_eng": "Snow No"
+                },
+                {
+                  "value_code": "snow_light",
+                  "label_kor": "눈 약함",
+                  "label_eng": "Snow Light"
+                },
+                {
+                  "value_code": "snow_medium",
+                  "label_kor": "눈 중간",
+                  "label_eng": "Snow Medium"
+                },
+                {
+                  "value_code": "snow_extreme",
+                  "label_kor": "눈 강함",
+                  "label_eng": "Snow Extreme"
+                },
+                {
+                  "value_code": "fog_no",
+                  "label_kor": "안개 없음",
+                  "label_eng": "Fog No"
+                },
+                {
+                  "value_code": "fog_light",
+                  "label_kor": "안개 약함",
+                  "label_eng": "Fog Light"
+                },
+                {
+                  "value_code": "fog_medium",
+                  "label_kor": "안개 중간",
+                  "label_eng": "Fog Medium"
+                },
+                {
+                  "value_code": "fog_extreme",
+                  "label_kor": "안개 강함",
+                  "label_eng": "Fog Extreme"
+                },
+                {
+                  "value_code": "other",
+                  "label_kor": "기타",
+                  "label_eng": "Other"
+                },
+                {
+                  "value_code": "unknown_derived_weather_legacy",
+                  "label_kor": "예측 날씨 알 수 없음",
+                  "label_eng": "Unknown Derived Weather Legacy"
+                }
+              ],
+              "attribute_label_kor": "유추된 과거 날씨 정보",
+              "product_scenario": "common",
+              "required": true
+            }
+          }
+        },
+        "road_surface_contamination": {
+          "name": "road_surface_contamination",
+          "attributes": {
+            "road_surface_contamination": {
+              "attribute_key": "road_surface_contamination",
+              "attribute_label_eng": "Road Surface Contamination",
+              "values": [
+                {
+                  "value_code": "road_surface_contamination_no",
+                  "label_kor": "도로 표면 오염 없음",
+                  "label_eng": "Road Surface Contamination No"
+                },
+                {
+                  "value_code": "road_surface_contamination_light",
+                  "label_kor": "도로 표면 오염 약함",
+                  "label_eng": "Road Surface Contamination Light"
+                },
+                {
+                  "value_code": "road_surface_contamination_medium",
+                  "label_kor": "도로 표면 오염 중간",
+                  "label_eng": "Road Surface Contamination Medium"
+                },
+                {
+                  "value_code": "road_surface_contamination_extreme",
+                  "label_kor": "도로 표면 오염 강함",
+                  "label_eng": "Road Surface Contamination Extreme"
+                },
+                {
+                  "value_code": "no_road_surface_contamination",
+                  "label_kor": "도로 표면 오염 해당 없음",
+                  "label_eng": "No Road Surface Contamination"
+                }
+              ],
+              "attribute_label_kor": "도로 오염 상태",
+              "product_scenario": "common",
+              "required": false
+            }
+          }
+        },
+        "damaged_line": {
+          "name": "damaged_line",
+          "attributes": {
+            "damaged_line": {
+              "attribute_key": "damaged_line",
+              "attribute_label_eng": "Damaged Line",
+              "values": [
+                {
+                  "value_code": "damaged_line_no",
+                  "label_kor": "차선 훼손 없음",
+                  "label_eng": "Damaged Line No"
+                },
+                {
+                  "value_code": "damaged_line_light",
+                  "label_kor": "차선 훼손 약함",
+                  "label_eng": "Damaged Line Light"
+                },
+                {
+                  "value_code": "damaged_line_medium",
+                  "label_kor": "차선 훼손 중간",
+                  "label_eng": "Damaged Line Mediun"
+                },
+                {
+                  "value_code": "damaged_line_extreme",
+                  "label_kor": "차선 훼손 강함",
+                  "label_eng": "Damaged Line Extreme"
+                },
+                {
+                  "value_code": "no_damaged_line",
+                  "label_kor": "차선 훼손 해당 없음",
+                  "label_eng": "No Damaged Line"
+                }
+              ],
+              "attribute_label_kor": "차선 훼손 상태",
+              "product_scenario": "driving",
+              "required": false
+            }
+          }
+        }
+      }
+    },
+    "Dynamic_Elements": {
+      "name": "Dynamic_Elements",
+      "classes": {
+        "ego_vehicle": {
+          "name": "ego_vehicle",
+          "attributes": {
+            "camera_blockage_general": {
+              "attribute_key": "camera_blockage_general",
+              "attribute_label_eng": "Camera Blockage General",
+              "values": [
+                {
+                  "value_code": "camera_blockage_general_no",
+                  "label_kor": "카메라 가림 없음",
+                  "label_eng": "Camera Blockage General No"
+                },
+                {
+                  "value_code": "camera_blockage_general_light",
+                  "label_kor": "카메라 가림 약함",
+                  "label_eng": "Camera Blockage General Light"
+                },
+                {
+                  "value_code": "camera_blockage_general_medium",
+                  "label_kor": "카메라 가림 중간",
+                  "label_eng": "Camera Blockage General Medium"
+                },
+                {
+                  "value_code": "camera_blockage_general_extreme",
+                  "label_kor": "카메라 가림 강함",
+                  "label_eng": "Camera Blockage General Extreme"
+                }
+              ],
+              "attribute_label_kor": "일반 카메라 가림",
+              "product_scenario": "common",
+              "required": false
+            },
+            "camera_blockage_by_wiper": {
+              "attribute_key": "camera_blockage_by_wiper",
+              "attribute_label_eng": "Camera Blockage by Wiper",
+              "values": [
+                {
+                  "value_code": "camera_blockage_by_wiper_no",
+                  "label_kor": "와이퍼에 의한 카메라 가림 없음",
+                  "label_eng": "Camera Blockage By Wiper No"
+                },
+                {
+                  "value_code": "camera_blockage_by_wiper_light",
+                  "label_kor": "와이퍼에 의한 카메라 가림 약함",
+                  "label_eng": "Camera Blockage By Wiper Light"
+                },
+                {
+                  "value_code": "camera_blockage_by_wiper_medium",
+                  "label_kor": "와이퍼에 의한 카메라 가림 중간",
+                  "label_eng": "Camera Blockage By Wiper Medium"
+                },
+                {
+                  "value_code": "camera_blockage_by_wiper_extreme",
+                  "label_kor": "와이퍼에 의한 카메라 가림 강함",
+                  "label_eng": "Camera Blockage By Wiper Extreme"
+                }
+              ],
+              "attribute_label_kor": "와이퍼에 의한 가림",
+              "product_scenario": "common",
+              "required": false
+            }
+          }
+        },
+        "traffic_vehicle": {
+          "name": "traffic_vehicle",
+          "attributes": {
+            "vehicle_type": {
+              "attribute_key": "vehicle_type",
+              "attribute_label_eng": "Vehicle Type",
+              "values": [
+                {
+                  "value_code": "passenger_car",
+                  "label_kor": "승용차",
+                  "label_eng": "Passenger Car"
+                },
+                {
+                  "value_code": "pickup_truck",
+                  "label_kor": "픽업트럭",
+                  "label_eng": "Pickup Truck"
+                },
+                {
+                  "value_code": "truck",
+                  "label_kor": "화물차",
+                  "label_eng": "Truck"
+                },
+                {
+                  "value_code": "bus",
+                  "label_kor": "버스",
+                  "label_eng": "Bus"
+                },
+                {
+                  "value_code": "trailer",
+                  "label_kor": "트레일러",
+                  "label_eng": "Trailer"
+                },
+                {
+                  "value_code": "motorcycle",
+                  "label_kor": "오토바이",
+                  "label_eng": "Motorcycle"
+                },
+                {
+                  "value_code": "trike",
+                  "label_kor": "삼륜차",
+                  "label_eng": "Trike"
+                },
+                {
+                  "value_code": "atv",
+                  "label_kor": "ATV",
+                  "label_eng": "ATV"
+                },
+                {
+                  "value_code": "electric_scooter",
+                  "label_kor": "전동킥보드",
+                  "label_eng": "Electric Scooter"
+                },
+                {
+                  "value_code": "bicycle",
+                  "label_kor": "자전거",
+                  "label_eng": "Bicycle"
+                },
+                {
+                  "value_code": "emergency_vehicle",
+                  "label_kor": "긴급차량",
+                  "label_eng": "Emergency Vehicle"
+                },
+                {
+                  "value_code": "emergency_light_on_vehicle",
+                  "label_kor": "경광등이 켜진 차량",
+                  "label_eng": "Emergency Light On Vehicle"
+                },
+                {
+                  "value_code": "horse_vehicle",
+                  "label_kor": "마차",
+                  "label_eng": "Horse Vehicle"
+                },
+                {
+                  "value_code": "no_vehicle_type",
+                  "label_kor": "차량 해당 없음",
+                  "label_eng": "No Vehicle Type"
+                }
+              ],
+              "attribute_label_kor": "차량 유형",
+              "product_scenario": "common",
+              "required": false
+            },
+            "vehicle_density": {
+              "attribute_key": "vehicle_density",
+              "attribute_label_eng": "Vehicle Density",
+              "values": [
+                {
+                  "value_code": "vehicle_density_no",
+                  "label_kor": "차량 혼잡 없음",
+                  "label_eng": "Vehicle Density No"
+                },
+                {
+                  "value_code": "vehicle_density_light",
+                  "label_kor": "차량 혼잡 약함",
+                  "label_eng": "Vehicle Density Light"
+                },
+                {
+                  "value_code": "vehicle_density_medium",
+                  "label_kor": "차량 혼잡 중간",
+                  "label_eng": "Vehicle Density Medium"
+                },
+                {
+                  "value_code": "vehicle_density_extreme",
+                  "label_kor": "차량 혼잡 강함",
+                  "label_eng": "Vehicle Density Extreme"
+                },
+                {
+                  "value_code": "no_vehicle_density",
+                  "label_kor": "차량 혼잡 해당 없음",
+                  "label_eng": "No Vehicle Density"
+                }
+              ],
+              "attribute_label_kor": "차량 밀도",
+              "product_scenario": "common",
+              "required": false
+            },
+            "vehicle_behavior": {
+              "attribute_key": "vehicle_behavior",
+              "attribute_label_eng": "Vehicle Behavior",
+              "values": [
+                {
+                  "value_code": "changing_lane",
+                  "label_kor": "차선 변경 중",
+                  "label_eng": "Changing Lane"
+                },
+                {
+                  "value_code": "in_the_blind_spot_of_ego",
+                  "label_kor": "사각지대",
+                  "label_eng": "In Blind Spot"
+                },
+                {
+                  "value_code": "on_the_edge_of_the_road",
+                  "label_kor": "도로 가장자리",
+                  "label_eng": "On Road Edge"
+                },
+                {
+                  "value_code": "no_vehicle_behavior",
+                  "label_kor": "차량 행동 해당 없음",
+                  "label_eng": "No Vehicle Behavior"
+                }
+              ],
+              "attribute_label_kor": "차량 행동",
+              "product_scenario": "common",
+              "required": false
+            }
+          }
+        },
+        "pedestrian": {
+          "name": "pedestrian",
+          "attributes": {
+            "pedestrian_type": {
+              "attribute_key": "pedestrian_type",
+              "attribute_label_eng": "Pedestrian Type",
+              "values": [
+                {
+                  "value_code": "adult",
+                  "label_kor": "성인",
+                  "label_eng": "Adult"
+                },
+                {
+                  "value_code": "children",
+                  "label_kor": "어린이",
+                  "label_eng": "Children"
+                },
+                {
+                  "value_code": "no_pedestrian_type",
+                  "label_kor": "보행자 해당 없음",
+                  "label_eng": "No Pedestrian Type"
+                }
+              ],
+              "attribute_label_kor": "보행자 유형",
+              "product_scenario": "common",
+              "required": false
+            },
+            "pedestrian_density": {
+              "attribute_key": "pedestrian_density",
+              "attribute_label_eng": "Pedestrian Density",
+              "values": [
+                {
+                  "value_code": "pedestrian_density_no",
+                  "label_kor": "보행자 혼잡 없음",
+                  "label_eng": "Pedestrian Density No"
+                },
+                {
+                  "value_code": "pedestrian_density_light",
+                  "label_kor": "보행자 혼잡 약함",
+                  "label_eng": "Pedestrian Density Light"
+                },
+                {
+                  "value_code": "pedestrian_density_medium",
+                  "label_kor": "보행자 혼잡 중간",
+                  "label_eng": "Pedestrian Density Medium"
+                },
+                {
+                  "value_code": "pedestrian_density_extreme",
+                  "label_kor": "보행자 혼잡 강함",
+                  "label_eng": "Pedestrian Density Extreme"
+                },
+                {
+                  "value_code": "no_pedestrian_density",
+                  "label_kor": "보행자 혼잡 해당 없음",
+                  "label_eng": "No Pedestrian Density"
+                }
+              ],
+              "attribute_label_kor": "보행자 밀도",
+              "product_scenario": "common",
+              "required": false
+            },
+            "pedestrian_behavior": {
+              "attribute_key": "pedestrian_behavior",
+              "attribute_label_eng": "Pedestrian Behavior",
+              "values": [
+                {
+                  "value_code": "crossing_the_street",
+                  "label_kor": "길 건너는 중",
+                  "label_eng": "Crossing Street"
+                },
+                {
+                  "value_code": "standing_behind_a_car",
+                  "label_kor": "차량 뒤 정지",
+                  "label_eng": "Behind A Car"
+                },
+                {
+                  "value_code": "on_a_wheelchair",
+                  "label_kor": "휠체어 탑승",
+                  "label_eng": "On Weather"
+                },
+                {
+                  "value_code": "pushing_a_shopping_cart",
+                  "label_kor": "쇼핑카트 밀기",
+                  "label_eng": "Pushing Shopping Cart"
+                },
+                {
+                  "value_code": "pushing_a_stroller",
+                  "label_kor": "유모차 밀기",
+                  "label_eng": "Pushing Stroller"
+                },
+                {
+                  "value_code": "carrying_a_large_object",
+                  "label_kor": "큰 물건 운반",
+                  "label_eng": "Carrying Large Object"
+                },
+                {
+                  "value_code": "no_pedestrian_behavior",
+                  "label_kor": "보행 행동 없음",
+                  "label_eng": "No Pedestrian Behavior"
+                }
+              ],
+              "attribute_label_kor": "보행자 행동",
+              "product_scenario": "common",
+              "required": false
+            },
+            "pedestrian_contrast_against_background": {
+              "attribute_key": "pedestrian_contrast_against_background",
+              "attribute_label_eng": "Pedestrian Contrast Against Background",
+              "values": [
+                {
+                  "value_code": "pedestrian_contrast_against_background_no",
+                  "label_kor": "보행자 인식 없음",
+                  "label_eng": "Pedestrian Contrast Against Background No"
+                },
+                {
+                  "value_code": "pedestrian_contrast_against_background_light",
+                  "label_kor": "보행자 인식 약함",
+                  "label_eng": "Pedestrian Contrast Against Background Light"
+                },
+                {
+                  "value_code": "pedestrian_contrast_against_background_medium",
+                  "label_kor": "보행자 인식 중간",
+                  "label_eng": "Pedestrian Contrast Against Background Medium"
+                },
+                {
+                  "value_code": "pedestrian_contrast_against_background_extreme",
+                  "label_kor": "보행자 인식 강함",
+                  "label_eng": "Pedestrian Contrast Against Background Extreme"
+                },
+                {
+                  "value_code": "no_pedestrian_contrast_against_background",
+                  "label_kor": "보행자 인식 해당 없음",
+                  "label_eng": "No Pedestrian Contrast Against Background"
+                }
+              ],
+              "attribute_label_kor": "배경 대비 보행자 인식 가능 여부",
+              "product_scenario": "common",
+              "required": false
+            }
+          }
+        },
+        "animal": {
+          "name": "animal",
+          "attributes": {
+            "animal_type": {
+              "attribute_key": "animal_type",
+              "attribute_label_eng": "Animal Type",
+              "values": [
+                {
+                  "value_code": "dog",
+                  "label_kor": "개",
+                  "label_eng": "Dog"
+                },
+                {
+                  "value_code": "cat",
+                  "label_kor": "고양이",
+                  "label_eng": "Cat"
+                },
+                {
+                  "value_code": "other",
+                  "label_kor": "기타",
+                  "label_eng": "Other"
+                },
+                {
+                  "value_code": "no_animal_type",
+                  "label_kor": "동물 없음",
+                  "label_eng": "No Animal Type"
+                }
+              ],
+              "attribute_label_kor": "동물 유형",
+              "product_scenario": "common",
+              "required": false
+            }
+          }
+        }
+      }
+    },
+    "Sensor": {
+      "name": "Sensor",
+      "classes": {
+        "contamination": {
+          "name": "contamination",
+          "attributes": {
+            "derived_sensor_condition": {
+              "attribute_key": "derived_sensor_condition",
+              "attribute_label_eng": "Derived Sensor Condition",
+              "values": [
+                {
+                  "value_code": "unknown_no",
+                  "label_kor": "알 수 없음 없음",
+                  "label_eng": "Unknown No"
+                },
+                {
+                  "value_code": "unknown_yes",
+                  "label_kor": "알 수 없음 있음",
+                  "label_eng": "Unknown Yes"
+                },
+                {
+                  "value_code": "blurry_no",
+                  "label_kor": "흐림 없음",
+                  "label_eng": "Blurry No"
+                },
+                {
+                  "value_code": "blurry_light",
+                  "label_kor": "흐림 약간",
+                  "label_eng": "Blurry Light"
+                },
+                {
+                  "value_code": "blurry_medium",
+                  "label_kor": "흐림 중간",
+                  "label_eng": "Blurry Medium"
+                },
+                {
+                  "value_code": "blurry_extreme",
+                  "label_kor": "흐림 심함",
+                  "label_eng": "Blurry Extreme"
+                },
+                {
+                  "value_code": "smoke_and_pollution_no",
+                  "label_kor": "연기 및 오염 없음",
+                  "label_eng": "Smoke and Pollution No"
+                },
+                {
+                  "value_code": "smoke_and_pollutoin_light",
+                  "label_kor": "연기 및 오염 약함",
+                  "label_eng": "Smoke and Pollution Light"
+                },
+                {
+                  "value_code": "smoke_and_pollutoin_medium",
+                  "label_kor": "연기 및 오염 중간",
+                  "label_eng": "Smoke and Pollution Medium"
+                },
+                {
+                  "value_code": "smoke_and_pollutoin_extreme",
+                  "label_kor": "연기 및 오염 강함",
+                  "label_eng": "Smoke and Pollution Extreme"
+                },
+                {
+                  "value_code": "volcanic_ash_no",
+                  "label_kor": "화산재 없음",
+                  "label_eng": "Volcanic Ash No"
+                },
+                {
+                  "value_code": "volcanic_ash_light",
+                  "label_kor": "화산재 약함",
+                  "label_eng": "Volcanic Ash Light"
+                },
+                {
+                  "value_code": "volcanic_medium",
+                  "label_kor": "화산재 중간",
+                  "label_eng": "Volcanic Ash Medium"
+                },
+                {
+                  "value_code": "volcanic_extreme",
+                  "label_kor": "화산재 강함",
+                  "label_eng": "Volcanic Ash Extreme"
+                },
+                {
+                  "value_code": "reflection_from_dash_no",
+                  "label_kor": "대시보드 반사 없음",
+                  "label_eng": "Reflection From Dash No  "
+                },
+                {
+                  "value_code": "reflection_from_dash_light",
+                  "label_kor": "대시보드 반사 약간",
+                  "label_eng": "Reflection From Dash Light  "
+                },
+                {
+                  "value_code": "reflection_from_dash_medium",
+                  "label_kor": "대시보드 반사 중간",
+                  "label_eng": "Reflection From Dash Medium  "
+                },
+                {
+                  "value_code": "reflection_from_dash_extreme",
+                  "label_kor": "대시보드 반사 강함",
+                  "label_eng": "Reflection From Dash Extreme  "
+                }
+              ],
+              "attribute_label_kor": "센서 상태",
+              "product_scenario": "common",
+              "required": false
+            }
+          }
+        }
+      }
+    }
+  }
+}
