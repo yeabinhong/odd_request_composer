@@ -21,6 +21,23 @@ st.set_page_config(
     layout="wide"
 )
 
+
+def check_password():
+    if st.session_state.get("authenticated"):
+        return
+    st.markdown("### ODD 기반 데이터 요구사항 정의 서비스")
+    pwd = st.text_input("비밀번호를 입력하세요", type="password")
+    if st.button("입력"):
+        if pwd == st.secrets["APP_PASSWORD"]:
+            st.session_state.authenticated = True
+            st.rerun()
+        else:
+            st.error("비밀번호가 틀렸습니다")
+    st.stop()
+
+
+check_password()
+
 # Region 옵션 정의
 REGION_OPTIONS = {
     "미국": "USA",
