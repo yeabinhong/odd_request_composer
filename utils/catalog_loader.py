@@ -2,8 +2,10 @@
 import json
 from pathlib import Path
 from typing import Dict, List, Any
+import streamlit as st
 
 
+@st.cache_data
 def load_catalog() -> Dict[str, Any]:
     """ODD Catalog JSON 파일 로드"""
     catalog_path = Path(__file__).parent.parent / "data" / "odd_catalog.json"

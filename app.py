@@ -66,6 +66,7 @@ def init_session_state():
     """세션 상태 초기화"""
     if 'catalog' not in st.session_state:
         st.session_state.catalog = load_catalog()
+        st.session_state.all_attrs = get_all_attributes_flat(st.session_state.catalog)
 
     if 'request_info' not in st.session_state:
         st.session_state.request_info = {
@@ -342,8 +343,7 @@ def render_core_odd_selection():
     )
     st.caption("💡 조건이 많을수록 조합 수가 급격히 늘어납니다. 5단계에서 예상 수를 확인하세요.")
 
-    catalog = st.session_state.catalog
-    all_attrs = get_all_attributes_flat(catalog)
+    all_attrs = st.session_state.all_attrs
 
     selected_scenario = (st.session_state.request_info.get('scenario') or 'Other').lower()
 
@@ -519,16 +519,16 @@ def render_scenario_generation():
             st.rerun()
 
 
-def _build_attr_label_map(catalog):
+def _build_attr_label_map():
     """attribute_key → 한글 라벨"""
-    return {a['attribute_key']: a['attribute_label'] for a in get_all_attributes_flat(catalog)}
+    return {a['attribute_key']: a['attribute_label'] for a in st.session_state.all_attrs}
 
 
-def _build_value_label_map(catalog):
+def _build_value_label_map():
     """attribute_key → {value_code: label_kor}"""
     return {
         a['attribute_key']: {v['value_code']: v.get('label_kor', v['value_code']) for v in a['values']}
-        for a in get_all_attributes_flat(catalog)
+        for a in st.session_state.all_attrs
     }
 
 
@@ -613,7 +613,7 @@ def _load_group_to_working_state(group_id: str):
             st.session_state['region_selectbox'] = region_label
 
     # Core ODD 위젯 상태 복원 (value_code → 한글 라벨)
-    value_label_map = _build_value_label_map(st.session_state.catalog)
+    value_label_map = _build_value_label_map()
     for attr_key, value_codes in group['core_selections'].items():
         kor_labels = []
         other_text = ''
@@ -751,9 +751,8 @@ def render_scenario_table():
     )
     st.caption("💡 수량·우선순위는 이 단계에서 입력하지 않습니다. 모든 그룹 저장 후 '최종 조건조합 테이블'에서 일괄 입력합니다.")
 
-    catalog = st.session_state.catalog
-    attr_label_map = _build_attr_label_map(catalog)
-    value_label_map = _build_value_label_map(catalog)
+    attr_label_map = _build_attr_label_map()
+    value_label_map = _build_value_label_map()
     ext_label_map = {ext['key']: ext['display_name'] for ext in st.session_state.extensions}
     ext_label_map['ext.region'] = '지역'
 
@@ -837,9 +836,8 @@ def render_final_combined_table():
                         st.rerun()
 
         # 라벨 맵 구성
-        catalog = st.session_state.catalog
-        attr_label_map = _build_attr_label_map(catalog)
-        value_label_map = _build_value_label_map(catalog)
+        attr_label_map = _build_attr_label_map()
+        value_label_map = _build_value_label_map()
         ext_label_map = {'ext.region': '지역'}
         for g in groups:
             for ext in g['extensions']:
