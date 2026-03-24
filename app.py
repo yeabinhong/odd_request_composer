@@ -26,8 +26,10 @@ def check_password():
     if st.session_state.get("authenticated"):
         return
     st.markdown("### ODD 기반 데이터 요구사항 정의 서비스")
-    pwd = st.text_input("비밀번호를 입력하세요", type="password")
-    if st.button("입력"):
+    with st.form("password_form"):
+        pwd = st.text_input("비밀번호를 입력하세요", type="password")
+        submitted = st.form_submit_button("입력")
+    if submitted:
         if pwd == st.secrets["APP_PASSWORD"]:
             st.session_state.authenticated = True
             st.rerun()
@@ -180,22 +182,24 @@ def render_request_info():
 
     if "데이터 라벨링" in ri.get('scope', []):
         st.markdown("**라벨링 Feature** *(필수)*")
-        col_fi, col_fb = st.columns([4, 1])
-        with col_fi:
-            new_feat_req = st.text_input(
-                "Feature 이름",
-                placeholder="예: 3DP OD, LPSD, 2DP LD",
-                label_visibility="collapsed",
-                help="라벨링 Feature = 어노테이션 유형\n예) 3DP OD, LPSD (차선·주차선), 2DP LD"
-            )
-        with col_fb:
-            if st.button("➕ 추가", key="req_add_feature_btn"):
-                _name = new_feat_req.strip()
-                if _name and _name not in st.session_state.features:
-                    _add_feature(_name)
-                    st.rerun()
-                elif _name in st.session_state.features:
-                    st.warning(f"'{_name}'은(는) 이미 추가되어 있습니다.")
+        with st.form("add_feature_form", clear_on_submit=True):
+            col_fi, col_fb = st.columns([4, 1])
+            with col_fi:
+                new_feat_req = st.text_input(
+                    "Feature 이름",
+                    placeholder="예: 3DP OD, LPSD, 2DP LD",
+                    label_visibility="collapsed",
+                    help="라벨링 Feature = 어노테이션 유형\n예) 3DP OD, LPSD (차선·주차선), 2DP LD"
+                )
+            with col_fb:
+                feat_submitted = st.form_submit_button("➕ 추가")
+        if feat_submitted:
+            _name = new_feat_req.strip()
+            if _name and _name not in st.session_state.features:
+                _add_feature(_name)
+                st.rerun()
+            elif _name in st.session_state.features:
+                st.warning(f"'{_name}'은(는) 이미 추가되어 있습니다.")
         if st.session_state.features:
             for _feat in list(st.session_state.features):
                 col_chip, col_del = st.columns([6, 1])
@@ -372,8 +376,6 @@ def render_extensions():
 
     # 새 Extension 추가
     with st.expander("➕ Extension 추가", expanded=True):
-        col1, col2 = st.columns(2)
-
         EXT_CATEGORY_OPTIONS = {
             "environmental — 환경 특수조건 (sandstorm, 사막 등)": "environmental",
             "target — 타겟 조건 (object, distance, speed, behavior 등)": "target",
@@ -381,31 +383,29 @@ def render_extensions():
             "sensor — 센서/카메라 조건 (bokeh, blur, frozen 등)": "sensor",
         }
 
-        with col1:
-            category_display = st.selectbox(
-                "카테고리",
-                options=list(EXT_CATEGORY_OPTIONS.keys()),
-                key="new_ext_category",
-                help="target: 검출 대상 조건 (물체, 거리, 속도 등)\nvehicle: 자차 조건 (속도, 차선, 전조등 등)\nsensor: 카메라 조건 (bokeh, blur 등)\nenvironmental: 특수 환경 (모래폭풍 등)"
+        with st.form("add_extension_form", clear_on_submit=True):
+            col1, col2 = st.columns(2)
+            with col1:
+                category_display = st.selectbox(
+                    "카테고리",
+                    options=list(EXT_CATEGORY_OPTIONS.keys()),
+                    help="target: 검출 대상 조건 (물체, 거리, 속도 등)\nvehicle: 자차 조건 (속도, 차선, 전조등 등)\nsensor: 카메라 조건 (bokeh, blur 등)\nenvironmental: 특수 환경 (모래폭풍 등)"
+                )
+            with col2:
+                display_name = st.text_input(
+                    "표시명 (한글)",
+                    placeholder="예: 날씨, 자차 기동",
+                )
+            values_input = st.text_input(
+                "값 목록 (쉼표로 구분)",
+                placeholder="예: 맑음, 흐림, 비, 눈",
+                help="쉼표(,)로 구분하여 입력\n예) 맑음, 흐림, 비, 눈"
             )
-            category = EXT_CATEGORY_OPTIONS[category_display]
+            st.caption("💡 Extension이 없어도 Core ODD만으로 시나리오 생성이 가능합니다.")
+            ext_submitted = st.form_submit_button("Extension 추가")
 
-        with col2:
-            display_name = st.text_input(
-                "표시명 (한글)",
-                placeholder="예: 날씨, 자차 기동",
-                key="new_ext_display"
-            )
-
-        values_input = st.text_input(
-            "값 목록 (쉼표로 구분)",
-            placeholder="예: 맑음, 흐림, 비, 눈",
-            key="new_ext_values",
-            help="쉼표(,)로 구분하여 입력\n예) 맑음, 흐림, 비, 눈"
-        )
-        st.caption("💡 Extension이 없어도 Core ODD만으로 시나리오 생성이 가능합니다.")
-
-        if st.button("Extension 추가"):
+        category = EXT_CATEGORY_OPTIONS[category_display]
+        if ext_submitted:
             if display_name and values_input:
                 # Key 생성 규칙: ext.<category>.<slug>
                 slug = display_name.lower().replace(' ', '_')
